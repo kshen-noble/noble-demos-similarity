@@ -1,0 +1,46 @@
+id,SMILES,ODT
+Acetophenone, CC(=O)C1=CC=CC=C1,0.00024
+n-Amyl Acetate,CCCCCOC(C)=O,0.007
+Benzaldehyde, C1=CC=C(C=C1)C=O,0.0015
+Benzyl Acetate, CC(=O)OCC1=CC=CC=C1,0.00016
+n-Butyl Acetate,CCCCOC(=O)C,0.00013
+sec-Butyl Acetate,CCC(C)OC(=O)C,0.0025
+tert-Butyl Acetate,CC(=O)OC(C)(C)C,0.008
+n-Butyl Alcohol,CCCCO,0.0033
+n-Butyl Lactate,CCCCOC(=O)C(C)O,4.9e-9
+Butyraldehyde,CCCC=O,0.0003
+Camphor,CC1(C2CCC1(C(=O)C2)C)C,0.0026
+Citral,O=CC=C(C)CCC=C(C)C,0.000024
+o-Cresol, CC1=CC=CC=C1O,0.00005
+Cyclohexanol,C1CCCCC1O,0.058
+Diethyl Ketone,C(C)C(=O)CC,0.85
+Diisobutyl Ketone,C(C(C)C)C(=O)CC(C)C,0.103
+Dimethyl Disulfide,CSSC,0.00029
+Ethyl Acetate,C(C)(=O)OCC,0.09
+Ethyl Benzene,C(C)C1=CC=CC=C1,0.002
+Furfural,C(C1=CC=CO1)=O,0.002
+1-Hexanol,CCCCCCO,0.0024
+Indene,C1C=CC2=CC=CC=C12,0.0027
+Isoamyl Alcohol,C(CC(C)C)O,0.00169
+Isobutyl Acetate,C(C)(=O)OCC(C)C,0.008
+Isobutyraldehyde,C(C(C)C)=O,0.00034
+Isooctyl Alcohol,CC(C)CCCCCO,0.0092
+d-Limonene,CC1=CCC(CC1)C(=C)C,0.0018
+Mesityl Oxide,O=C(C)C=C(C)C,0.017
+Methyl Acetate,C(C)(=O)OC,0.17
+Methyl n-amyl Ketone,CCCCCC(=O)C,0.00075
+2-Methyl Butyl Acetate,CCC(C)COC(=O)C,0.026
+2-Methylcyclohexanone,CC1C(CCCC1)=O,0.181
+Methyl Isoamyl Ketone,C(CC(C)C)C(=O)C,0.0021
+Methyl Isobutyl Ketone,C(C(C)C)C(=O)C,0.03
+Methyl Isopropyl Ketone,C(C)(C)C(=O)C,0.51
+2-Methylnaphthalene,CC1=CC2=CC=CC=C2C=C1,0.00069
+Methyl Propyl Ketone,CCCC(=O)C,0.028
+Naphthalene,C1=CC=CC2=CC=CC=C12,0.0019
+1-Octanol,CCCCCCCCO,0.0009
+1-Pentanol,CCCCCO,0.0055
+Piperidine,C1CCNCC1,0.14
+n-Propyl Acetate,C(C)(=O)OCCC,0.048
+alpha-Pinene,CC1=CCC2CC1C2(C)C,0.00006
+n-Valeraldehyde,CCCCC=O,0.0004
+Vanillin,COC1=C(C=CC(=C1)C=O)O,1.6e-7
