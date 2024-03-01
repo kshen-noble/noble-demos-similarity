@@ -87,53 +87,53 @@ def main():
     st.title("Chemical Similarity Comparison")
 
     # Load data
-    df = pd.read_csv('smiles.csv')
+    df = pd.read_csv('eu_annex_iv_smiles.csv')
     df_smiles = df['SMILES']
 
+
     # Display original DataFrame
-    with st.sidebar:
-        st.subheader("Chemical Database:")
-        st.write(df)
+    # with st.sidebar:
+    st.subheader("Chemical Database:")
+    st.write(df)
 
-        # show internal diversity
-        ms = [Chem.MolFromSmiles(x) for x in df["SMILES"]]
-        #fpgen = AllChem.GetRDKitFPGenerator()
-        #fps = [ fpgen.GetSparseCountFingerprint(m) for m in ms ]
-        
-        fps0 = [ AllChem.GetMorganFingerprintAsBitVect(m,radius=2,nBits=512) for m in ms]
-        fps = []
-        for fp in fps0:
-            fingerprint_array = np.zeros((1,), dtype=int)  # Create an empty array to hold the fingerprint
-            DataStructs.ConvertToNumpyArray(fp, fingerprint_array) 
-            fps.append(fingerprint_array)
-        fps = np.array(fps)
+    # show internal diversity
+    ms = [Chem.MolFromSmiles(x) for x in df["SMILES"]]
+    #fpgen = AllChem.GetRDKitFPGenerator()
+    #fps = [ fpgen.GetSparseCountFingerprint(m) for m in ms ]
+    
+    fps0 = [ AllChem.GetMorganFingerprintAsBitVect(m,radius=2,nBits=512) for m in ms]
+    fps = []
+    for fp in fps0:
+        fingerprint_array = np.zeros((1,), dtype=int)  # Create an empty array to hold the fingerprint
+        DataStructs.ConvertToNumpyArray(fp, fingerprint_array) 
+        fps.append(fingerprint_array)
+    fps = np.array(fps)
 
-        tsne = TSNE(n_components=2, random_state=0)
-        X_2d = tsne.fit_transform(fps)
+    tsne = TSNE(n_components=2, random_state=0)
+    X_2d = tsne.fit_transform(fps)
 
-        df2 = df.copy()
-        df2["dim1"] = X_2d[:,0]
-        df2["dim2"] = X_2d[:,1]
-        df2["ODT"] = df2["ODT"].astype(float)
-        df2["log10ODT"] = np.log10(df2["ODT"])
-        fig = px.scatter(df2,x="dim1",y="dim2",color="log10ODT",
-                         color_continuous_scale=px.colors.sequential.Viridis,
-                         hover_name="id",
-                         hover_data=["SMILES","ODT"],
-                         labels={"log10ODT":"log10 ODT"})
+    df2 = df.copy()
+    df2["dim1"] = X_2d[:,0]
+    df2["dim2"] = X_2d[:,1]
+    fig = px.scatter(df2,x="dim1",y="dim2",color="Color", color_discrete_sequence = df['Color'].unique(),
+                    #  color_continuous_scale=px.colors.sequential.Viridis,
+                        hover_name="Colour index Number",
+                        # hover_data=["SMILES"],
+                    #  labels={"log10ODT":"log10 ODT"}
+                        )
 
-        fig.update_layout(
-                    width=425,
-                    height=425,
-                    font_family='Inter',
-                    font_size=14
-                    # title='Test'
-                )
-        fig.update_traces(marker=dict(size=12,
-                                            line=dict(width=2,
-                                                        color='DarkSlateGrey')),
-                                selector=dict(mode='markers'))
-        st.plotly_chart(fig, theme="streamlit", use_container_width=False)
+    fig.update_layout(
+                width=425,
+                height=425,
+                font_family='Inter',
+                font_size=14
+                # title='Test'
+            )
+    fig.update_traces(marker=dict(size=12,
+                                        line=dict(width=2,
+                                                    color='DarkSlateGrey')),
+                            selector=dict(mode='markers'))
+    st.plotly_chart(fig, theme="streamlit", use_container_width=False)
         
 
     # User input
@@ -142,8 +142,9 @@ def main():
     if user_smiles:
         # Calculate similarity and display result
         df_result = calculate_similarity(user_smiles, df_smiles)
-        df_result['id'] = df['id']
-        df_result['ODT'] = df['ODT']
+        df_result['SMILES'] = df['SMILES']
+        df_result['Reference Number'] = df['Reference Number']
+        df_result['Colour index Number'] = df['Colour index Number']
 
         c1,c2 = st.columns(2)
         # Visualize user input molecule
@@ -154,7 +155,7 @@ def main():
         if df_result is not None:
             with c2:
                 st.subheader("Similarity Comparison Result:")
-                fig = px.scatter(df_result, 'Similarity', 'ODT', hover_name='id')
+                fig = px.scatter(df_result, 'Similarity', 'Reference Number', hover_name='Colour index Number')
                 fig.update_layout(width=450, height=450)
 
                 fig.update_layout(
