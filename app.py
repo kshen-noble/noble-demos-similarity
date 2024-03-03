@@ -84,7 +84,7 @@ def calculate_similarity(user_smiles, smiles_list):
 
 # Streamlit app
 def main():
-    st.title("Chemical Similarity Comparison")
+    st.title("SBAI and Chemical Similarity for Colorants")
 
     # Load data
     df = pd.read_csv('eu_annex_iv_smiles.csv')
@@ -93,7 +93,7 @@ def main():
 
     # Display original DataFrame
     # with st.sidebar:
-    st.subheader("Chemical Database:")
+    st.subheader("EU Annex IV:")
     st.write(df)
 
     # show internal diversity
